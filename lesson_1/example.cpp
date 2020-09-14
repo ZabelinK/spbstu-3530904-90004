@@ -1,4 +1,8 @@
-struct user_t { 
+#include <ctime>
+#include <cstdio>
+#include <stdexcept>
+
+struct user_t {
     int id; 
     char * login; 
     char * first_name; 
@@ -15,11 +19,11 @@ user_t last_logged_in(FILE * source)
     
     while (!feof(source)) { 
         user_t user; 
-        
+
         if (!read_user(source, &user)) { 
             throw std::runtime_error("Read failed"); 
         } 
-        
+
         if (last_login < user.last_login) {
             last_login = user.last_login; 
             last_user = user; 
