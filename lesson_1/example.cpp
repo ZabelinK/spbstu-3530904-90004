@@ -13,7 +13,7 @@ struct user_t
 
 extern "C" int read_user(FILE *, user_t *user);
 
-user_t last_logged_in(FILE *source)
+user_t *last_logged_in(FILE *source)
 {
   std::time_t last_login = 0;
   user_t *last_user = nullptr;
@@ -34,5 +34,5 @@ user_t last_logged_in(FILE *source)
     }
   }
 
-  return *last_user;
+  return last_user;
 }
